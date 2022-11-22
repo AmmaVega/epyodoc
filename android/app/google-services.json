@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "296938795885",
+    "project_id": "epyodoc",
+    "storage_bucket": "epyodoc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296938795885:android:02b11b4e400ea925c1a064",
+        "android_client_info": {
+          "package_name": "com.ammadeus.epydoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296938795885-hbvp6oq9l38cncdt3u8hlsvqj4b43h1a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ammadeus.epydoc",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "296938795885-mvh0kkut2uh8mbcjvu1kquku1bfkngqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8Jo3y6nF60zUUsMHaj5VcwzJhXDWCUsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296938795885-mvh0kkut2uh8mbcjvu1kquku1bfkngqs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "296938795885-p6r9u7fp4o1l8lg2u1v9e86ebpjkj1fd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ammadeus.epydoc"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
