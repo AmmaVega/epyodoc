@@ -3,6 +3,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -166,7 +167,10 @@ class _SelecMedicoWidgetState extends State<SelecMedicoWidget> {
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(35),
                                     child: Image.network(
-                                      listViewUsersRecord.photoUrl!,
+                                      valueOrDefault<String>(
+                                        listViewUsersRecord.photoUrl,
+                                        'https://freesvg.org/img/abstract-user-flat-4.png',
+                                      ),
                                       width: 70,
                                       height: 70,
                                       fit: BoxFit.cover,
@@ -231,25 +235,13 @@ class _SelecMedicoWidgetState extends State<SelecMedicoWidget> {
                                       await DoctorPacienteRecord.collection
                                           .doc()
                                           .set(doctorPacienteCreateData);
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text(
-                                                'Código enviado al Medico:'),
-                                            content: Text(listViewUsersRecord
-                                                .displayName!),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
+                                      await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => NavBarPage(
+                                              initialPage: 'homePage'),
+                                        ),
                                       );
-                                      Navigator.pop(context);
                                     },
                                   ),
                                 ],

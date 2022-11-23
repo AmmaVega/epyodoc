@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/edit_booking_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -208,15 +209,20 @@ class _AppointmentDetailsWidgetState extends State<AppointmentDetailsWidget> {
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         2, 2, 2, 2),
-                                    child: Container(
-                                      width: 40,
-                                      height: 40,
-                                      clipBehavior: Clip.antiAlias,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: Image.asset(
-                                        'assets/images/UI_avatar_2@3x.png',
+                                    child: AuthUserStreamWidget(
+                                      child: Container(
+                                        width: 40,
+                                        height: 40,
+                                        clipBehavior: Clip.antiAlias,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Image.network(
+                                          valueOrDefault<String>(
+                                            currentUserPhoto,
+                                            'https://freesvg.org/img/abstract-user-flat-4.png',
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),

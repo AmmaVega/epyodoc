@@ -1,11 +1,9 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_radio_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/upload_media.dart';
 import '../selec_medico/selec_medico_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -25,14 +23,11 @@ class EditProfileWidget extends StatefulWidget {
 }
 
 class _EditProfileWidgetState extends State<EditProfileWidget> {
-  bool isMediaUploading = false;
-  String uploadedFileUrl = '';
-
-  TextEditingController? yourNameController;
-  TextEditingController? yourEmailController;
-  TextEditingController? yourAgeController;
-  TextEditingController? yourAilmentsController;
   String? radioButtonValue;
+  TextEditingController? yourAgeController;
+  TextEditingController? yourEmailController;
+  TextEditingController? yourNameController;
+  TextEditingController? yourAilmentsController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -122,7 +117,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         child: Image.network(
                           valueOrDefault<String>(
                             editProfileUsersRecord.photoUrl,
-                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/health-ai-mj6puy/assets/hu4vs0lstizz/UI_avatar_2@3x.png',
+                            'https://freesvg.org/img/abstract-user-flat-4.png',
                           ),
                         ),
                       ),
@@ -130,47 +125,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                       child: FFButtonWidget(
-                        onPressed: () async {
-                          final selectedMedia = await selectMedia(
-                            mediaSource: MediaSource.photoGallery,
-                            multiImage: false,
-                          );
-                          if (selectedMedia != null &&
-                              selectedMedia.every((m) =>
-                                  validateFileFormat(m.storagePath, context))) {
-                            setState(() => isMediaUploading = true);
-                            var downloadUrls = <String>[];
-                            try {
-                              showUploadMessage(
-                                context,
-                                'Uploading file...',
-                                showLoading: true,
-                              );
-                              downloadUrls = (await Future.wait(
-                                selectedMedia.map(
-                                  (m) async =>
-                                      await uploadData(m.storagePath, m.bytes),
-                                ),
-                              ))
-                                  .where((u) => u != null)
-                                  .map((u) => u!)
-                                  .toList();
-                            } finally {
-                              ScaffoldMessenger.of(context)
-                                  .hideCurrentSnackBar();
-                              isMediaUploading = false;
-                            }
-                            if (downloadUrls.length == selectedMedia.length) {
-                              setState(
-                                  () => uploadedFileUrl = downloadUrls.first);
-                              showUploadMessage(context, 'Success!');
-                            } else {
-                              setState(() {});
-                              showUploadMessage(
-                                  context, 'Failed to upload media');
-                              return;
-                            }
-                          }
+                        onPressed: () {
+                          print('Button-Login pressed ...');
                         },
                         text: FFLocalizations.of(context).getText(
                           'e8ng1499' /* Cambiar Foto */,

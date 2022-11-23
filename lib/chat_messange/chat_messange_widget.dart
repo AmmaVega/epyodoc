@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../flutter_flow/chat/index.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -23,33 +22,7 @@ class ChatMessangeWidget extends StatefulWidget {
 }
 
 class _ChatMessangeWidgetState extends State<ChatMessangeWidget> {
-  FFChatInfo? _chatInfo;
-  bool isGroupChat() {
-    if (widget.chatUser == null) {
-      return true;
-    }
-    if (widget.chatRef == null) {
-      return false;
-    }
-    return _chatInfo?.isGroupChat ?? false;
-  }
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-    FFChatManager.instance
-        .getChatInfo(
-      otherUserRecord: widget.chatUser,
-      chatReference: widget.chatRef,
-    )
-        .listen((info) {
-      if (mounted) {
-        setState(() => _chatInfo = info);
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -185,74 +158,6 @@ class _ChatMessangeWidgetState extends State<ChatMessangeWidget> {
         actions: [],
         centerTitle: false,
         elevation: 2,
-      ),
-      body: SafeArea(
-        child: StreamBuilder<FFChatInfo>(
-          stream: FFChatManager.instance.getChatInfo(
-            otherUserRecord: widget.chatUser,
-            chatReference: widget.chatRef,
-          ),
-          builder: (context, snapshot) => snapshot.hasData
-              ? FFChatPage(
-                  chatInfo: snapshot.data!,
-                  allowImages: true,
-                  backgroundColor: Color(0xFFF2F4F8),
-                  timeDisplaySetting: TimeDisplaySetting.alwaysVisible,
-                  currentUserBoxDecoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(
-                      color: Colors.transparent,
-                    ),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  otherUsersBoxDecoration: BoxDecoration(
-                    color: Color(0xFF29444F),
-                    border: Border.all(
-                      color: Colors.transparent,
-                    ),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  currentUserTextStyle: GoogleFonts.getFont(
-                    'DM Sans',
-                    color: Color(0xFF1E2429),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    fontStyle: FontStyle.normal,
-                  ),
-                  otherUsersTextStyle: GoogleFonts.getFont(
-                    'DM Sans',
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                  ),
-                  inputHintTextStyle: GoogleFonts.getFont(
-                    'DM Sans',
-                    color: Color(0xFF95A1AC),
-                    fontWeight: FontWeight.normal,
-                    fontSize: 14,
-                  ),
-                  inputTextStyle: GoogleFonts.getFont(
-                    'DM Sans',
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 14,
-                  ),
-                  emptyChatWidget: Image.asset(
-                    'assets/images/messagegris.png',
-                    width: MediaQuery.of(context).size.width * 0.76,
-                  ),
-                )
-              : Center(
-                  child: SizedBox(
-                    width: 40,
-                    height: 40,
-                    child: SpinKitPumpingHeart(
-                      color: FlutterFlowTheme.of(context).primaryColor,
-                      size: 40,
-                    ),
-                  ),
-                ),
-        ),
       ),
     );
   }

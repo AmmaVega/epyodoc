@@ -1,8 +1,6 @@
 import '../add_chat/add_chat_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../chat_messange/chat_messange_widget.dart';
-import '../flutter_flow/chat/index.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -111,56 +109,8 @@ class _MainChatWidgetState extends State<MainChatWidget> {
                     itemBuilder: (context, listViewIndex) {
                       final listViewChatsRecord =
                           listViewChatsRecordList[listViewIndex];
-                      return StreamBuilder<FFChatInfo>(
-                        stream: FFChatManager.instance
-                            .getChatInfo(chatRecord: listViewChatsRecord),
-                        builder: (context, snapshot) {
-                          final chatInfo =
-                              snapshot.data ?? FFChatInfo(listViewChatsRecord);
-                          return FFChatPreview(
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ChatMessangeWidget(
-                                  chatUser: chatInfo.otherUsers.length == 1
-                                      ? chatInfo.otherUsersList.first
-                                      : null,
-                                  chatRef: chatInfo.chatRecord.reference,
-                                ),
-                              ),
-                            ),
-                            lastChatText: chatInfo.chatPreviewMessage(),
-                            lastChatTime: listViewChatsRecord.lastMessageTime,
-                            seen: listViewChatsRecord.lastMessageSeenBy!
-                                .contains(currentUserReference),
-                            title: chatInfo.chatPreviewTitle(),
-                            userProfilePic: chatInfo.chatPreviewPic(),
-                            color: Color(0xFFEEF0F5),
-                            unreadColor: Colors.blue,
-                            titleTextStyle: GoogleFonts.getFont(
-                              'DM Sans',
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                            dateTextStyle: GoogleFonts.getFont(
-                              'DM Sans',
-                              color: Color(0x73000000),
-                              fontWeight: FontWeight.normal,
-                              fontSize: 14,
-                            ),
-                            previewTextStyle: GoogleFonts.getFont(
-                              'DM Sans',
-                              color: Color(0x73000000),
-                              fontWeight: FontWeight.normal,
-                              fontSize: 14,
-                            ),
-                            contentPadding:
-                                EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
-                            borderRadius: BorderRadius.circular(0),
-                          );
-                        },
-                      );
+                      return Container(
+                          width: 100, height: 100, color: Colors.green);
                     },
                   );
                 },

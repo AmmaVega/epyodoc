@@ -17,6 +17,8 @@ void main() async {
   await Firebase.initializeApp();
   await FlutterFlowTheme.initialize();
 
+  FFAppState(); // Initialize FFAppState
+
   runApp(MyApp());
 }
 
@@ -128,11 +130,13 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'homePage': HomePageWidget(),
       'myAppointments': MyAppointmentsWidget(),
+      'homePage': HomePageWidget(),
       'profilePage': ProfilePageWidget(),
       'mainChat': MainChatWidget(),
       'expdienteRecetas': ExpdienteRecetasWidget(),
+      'mainSensores': MainSensoresWidget(),
+      'homePageCopy': HomePageCopyWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -152,20 +156,6 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
-              size: 24,
-            ),
-            activeIcon: Icon(
-              Icons.home_rounded,
-              size: 24,
-            ),
-            label: FFLocalizations.of(context).getText(
-              'l0zfa5dz' /* • */,
-            ),
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.date_range_outlined,
               size: 24,
             ),
@@ -175,6 +165,20 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
             label: FFLocalizations.of(context).getText(
               'f4l92r8g' /* • */,
+            ),
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home_outlined,
+              size: 24,
+            ),
+            activeIcon: Icon(
+              Icons.home_rounded,
+              size: 24,
+            ),
+            label: FFLocalizations.of(context).getText(
+              'l0zfa5dz' /* • */,
             ),
             tooltip: '',
           ),
@@ -213,7 +217,37 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.folder_shared,
               size: 32,
             ),
-            label: '•',
+            label: FFLocalizations.of(context).getText(
+              'fagowszk' /* • */,
+            ),
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.settings_outlined,
+              size: 24,
+            ),
+            activeIcon: Icon(
+              Icons.settings,
+              size: 32,
+            ),
+            label: FFLocalizations.of(context).getText(
+              '93s04zpw' /* __ */,
+            ),
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home_outlined,
+              size: 24,
+            ),
+            activeIcon: Icon(
+              Icons.home_rounded,
+              size: 24,
+            ),
+            label: FFLocalizations.of(context).getText(
+              'i2pni37t' /* • */,
+            ),
             tooltip: '',
           )
         ],

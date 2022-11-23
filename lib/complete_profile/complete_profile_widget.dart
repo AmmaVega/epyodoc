@@ -358,7 +358,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                           animationsMap['circleImageOnPageLoadAnimation']!),
                       Text(
                         FFLocalizations.of(context).getText(
-                          'f3knomtf' /* Fotos de identificación */,
+                          'f3knomtf' /* Foto de identificación */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1,
                       ).animateOnPageLoad(
@@ -696,6 +696,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                   userSex: radioButtonValue,
                                   email: currentUserEmail,
                                   rolusuario: rolusuarioValue,
+                                  photoUrl: FFAppState().pathImagen,
                                 );
                                 await buttonLoginUsersRecord.reference
                                     .update(usersUpdateData);
@@ -708,13 +709,20 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                                       builder: (context) => SelecMedicoWidget(),
                                     ),
                                   );
-                                  return;
-                                } else {
                                   await Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
                                           NavBarPage(initialPage: 'homePage'),
+                                    ),
+                                  );
+                                  return;
+                                } else {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => NavBarPage(
+                                          initialPage: 'homePageCopy'),
                                     ),
                                   );
                                 }

@@ -215,6 +215,7 @@ class _AddChatWidgetState extends State<AddChatWidget> {
                             },
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -242,7 +243,10 @@ class _AddChatWidgetState extends State<AddChatWidget> {
                                               shape: BoxShape.circle,
                                             ),
                                             child: Image.network(
-                                              columnUsersRecord.photoUrl!,
+                                              valueOrDefault<String>(
+                                                columnUsersRecord.photoUrl,
+                                                'https://freesvg.org/img/abstract-user-flat-4.png',
+                                              ),
                                             ),
                                           ),
                                         ),

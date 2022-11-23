@@ -218,8 +218,8 @@ class _AppointmentDetailsProfileWidgetState
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                           ),
-                                          child: Image.asset(
-                                            'assets/images/UI_avatar_2@3x.png',
+                                          child: Image.network(
+                                            'https://freesvg.org/img/abstract-user-flat-4.png',
                                           ),
                                         ),
                                       ),

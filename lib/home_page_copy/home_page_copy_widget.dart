@@ -1,13 +1,14 @@
 import '../appointment_details/appointment_details_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/book_appointment_widget.dart';
 import '../components/main_logo_widget.dart';
+import '../find_symptoms/find_symptoms_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../login_page/login_page_widget.dart';
 import '../main.dart';
+import '../monitor_pacientes/monitor_pacientes_widget.dart';
 import '../search_doctor/search_doctor_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -15,8 +16,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({
+class HomePageCopyWidget extends StatefulWidget {
+  const HomePageCopyWidget({
     Key? key,
     this.test,
   }) : super(key: key);
@@ -24,10 +25,10 @@ class HomePageWidget extends StatefulWidget {
   final AsdfasdfRecord? test;
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  _HomePageCopyWidgetState createState() => _HomePageCopyWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -48,22 +49,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
           );
         }
-        final homePageUsersRecord = snapshot.data!;
+        final homePageCopyUsersRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              print('FloatingActionButton pressed ...');
-            },
-            backgroundColor: Color(0xFF530404),
-            elevation: 10,
-            child: Icon(
-              Icons.healing,
-              color: FlutterFlowTheme.of(context).textColor,
-              size: 30,
-            ),
-          ),
           body: SafeArea(
             child: SingleChildScrollView(
               child: Column(
@@ -102,7 +91,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    'ojzvr92c' /* Bienvenido */,
+                                    'r3nwfhsz' /* Bienvenido */,
                                   ),
                                   style: FlutterFlowTheme.of(context).title1,
                                 ),
@@ -345,7 +334,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        '9vkmgp0z' /* Your next appointment */,
+                                                        '6mh97ztq' /* Citas Programadas */,
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -497,7 +486,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'a9jbwy9s' /* For */,
+                                                        'c1l41hjn' /* For */,
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -571,27 +560,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   child: InkWell(
                                     onTap: () async {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        context: context,
-                                        builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.of(context)
-                                                .viewInsets,
-                                            child: Container(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  1,
-                                              child: BookAppointmentWidget(
-                                                userProfile: homePageUsersRecord
-                                                    .reference,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      ).then((value) => setState(() {}));
+                                      await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              MonitorPacientesWidget(),
+                                        ),
+                                      );
                                     },
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -601,7 +576,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   15, 0, 0, 0),
                                           child: Image.asset(
-                                            'assets/images/iconCalendar.png',
+                                            'assets/images/wareable2.png',
                                             width: 60,
                                             height: 60,
                                             fit: BoxFit.cover,
@@ -622,7 +597,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'uwlndoos' /* Agendar Cita */,
+                                                    '5vbf4v6v' /* Estatus de sus Pacientes */,
                                                   ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
@@ -647,7 +622,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'fql1w7e3' /* Agenda una cita / estudio  */,
+                                                        '7mna1nxs' /* Monitoreo, Seguimiento, Alerta... */,
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -739,7 +714,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'vm32c1ad' /* Expediente clínico */,
+                                                        '2yo4g6qo' /* Expediente clínico */,
                                                       ),
                                                       textAlign:
                                                           TextAlign.start,
@@ -765,7 +740,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'te4p10wc' /* Recetas Medicas, Estudios, Dia... */,
+                                                            'gys1m10k' /* Recetas Medicas, Estudios, Dia... */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -817,8 +792,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           await Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) => NavBarPage(
-                                                  initialPage: 'mainSensores'),
+                                              builder: (context) =>
+                                                  FindSymptomsWidget(),
                                             ),
                                           );
                                         },
@@ -829,7 +804,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(15, 0, 0, 0),
                                               child: Image.asset(
-                                                'assets/images/wareable3.png',
+                                                'assets/images/calibra2.png',
                                                 width: 60,
                                                 height: 60,
                                                 fit: BoxFit.contain,
@@ -851,7 +826,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        '5g11a5z5' /* Lectura signos vitales */,
+                                                        'akrh9d4l' /* Biblioteca */,
                                                       ),
                                                       textAlign:
                                                           TextAlign.start,
@@ -877,7 +852,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'jn02zvaf' /* Sensores activos, históricos, ... */,
+                                                            'ywe5hvny' /* Calibrar Sensores, Medicamento... */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
